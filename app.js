@@ -4,14 +4,23 @@ const app = express();
 
 const port = config.port
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+})
+
 app.get('/userDetail', function (req, res) {
+    console.log('')
+    console.log('GET /userDetail')
     let userDetail = {
         personal:{
-            firstname: 'Thanapornchai',
-            lastname: 'Chitpho',
+            prename: 'นาย',
+            firstname: 'ธนพรชัย',
+            lastname: 'ชิดโพธิ์',
             age: 25,
             dob: '11/06/2537',
-            phoneNumber: 0805232943
+            phoneNumber: "0805232943"
         },
         address:[
             {
@@ -19,9 +28,9 @@ app.get('/userDetail', function (req, res) {
                    no: '80/4',
                    street: "-",
                    state: '-',
-                   municipal: '-',
-                   city: 'Muang',
-                   province: 'Chumphon',
+                   municipal: 'นาตะอัง',
+                   city: 'เมื่อง',
+                   province: 'ชุมพร',
                     postAddress: '86000'
                 }
             }
